@@ -34,11 +34,9 @@ public class PailTap extends Hfs {
     private static Logger LOG = Logger.getLogger(PailTap.class);
 
     public static PailSpec makeSpec(PailSpec given, PailStructure structure) {
-        if(given==null) {
-            return PailFormatFactory.getDefaultCopy().setStructure(structure);
-        } else {
-            return given.setStructure(structure);
-        }
+        return (given==null)
+            ? PailFormatFactory.getDefaultCopy().setStructure(structure)
+            : given.setStructure(structure);
     }
 
     public static class PailTapOptions implements Serializable {
@@ -60,7 +58,7 @@ public class PailTap extends Hfs {
     }
 
 
-    public class PailScheme extends Scheme<FlowProcess<JobConf>, JobConf, RecordReader, OutputCollector, Object[], Object[]> {
+    public class PailScheme extends Scheme<JobConf, RecordReader, OutputCollector, Object[], Object[]> {
         private PailTapOptions _options;
 
         public PailScheme(PailTapOptions options) {
@@ -107,8 +105,7 @@ public class PailTap extends Hfs {
         }
 
         @Override
-        public void sourceConfInit(FlowProcess<JobConf> process,
-            Tap<FlowProcess<JobConf>, JobConf, RecordReader, OutputCollector> tap, JobConf conf) {
+        public void sourceConfInit(FlowProcess<JobConf> process, Tap<JobConf, RecordReader, OutputCollector> tap, JobConf conf) {
             Pail p;
             try {
                 p = new Pail(_pailRoot); //make sure it exists
@@ -120,7 +117,7 @@ public class PailTap extends Hfs {
         }
 
         @Override public void sinkConfInit(FlowProcess<JobConf> flowProcess,
-            Tap<FlowProcess<JobConf>, JobConf, RecordReader, OutputCollector> tap, JobConf conf) {
+            Tap<JobConf, RecordReader, OutputCollector> tap, JobConf conf) {
             conf.setOutputFormat(PailOutputFormat.class);
             Utils.setObject(conf, PailOutputFormat.SPEC_ARG, getSpec());
             try {

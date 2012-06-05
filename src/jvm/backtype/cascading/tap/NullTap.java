@@ -17,22 +17,19 @@ import java.io.IOException;
 
 public class NullTap extends Tap  {
 
-    public static class NullScheme
-        extends Scheme<FlowProcess<JobConf>, JobConf, RecordReader, OutputCollector, Object[], Object[]> {
+    public static class NullScheme extends Scheme<JobConf, RecordReader, OutputCollector, Object[], Object[]> {
 
         public NullScheme() {
             super(Fields.ALL);
         }
 
         @Override
-        public void sourceConfInit(FlowProcess<JobConf> prcs,
-            Tap<FlowProcess<JobConf>, JobConf, RecordReader, OutputCollector> tap, JobConf conf) {
+        public void sourceConfInit(FlowProcess<JobConf> prcs, Tap<JobConf, RecordReader, OutputCollector> tap, JobConf conf) {
             throw new IllegalArgumentException("Cannot use as a source");
         }
 
         @Override
-        public void sinkConfInit(FlowProcess<JobConf> prcs,
-            Tap<FlowProcess<JobConf>, JobConf, RecordReader, OutputCollector> tap, JobConf conf) {
+        public void sinkConfInit(FlowProcess<JobConf> prcs, Tap<JobConf, RecordReader, OutputCollector> tap, JobConf conf) {
             conf.setOutputFormat(NullOutputFormat.class);
         }
 

@@ -1,4 +1,4 @@
-(defproject backtype/dfs-datastores-cascading "1.1.5-SNAPSHOT"
+(defproject backtype/dfs-datastores-cascading "1.2.0-SNAPSHOT"
   :java-source-path "src/jvm"
   :source-path "src/clj"
   :java-test-path "test/jvm"
@@ -8,7 +8,7 @@
   :junit-options {:fork "off" :haltonfailure "on"}
   :repositories {"conjars" "http://conjars.org/repo"}
   :dependencies [[backtype/dfs-datastores "1.1.0"]
-                 [cascading/cascading-hadoop "2.0.0-wip-281"
+                 [cascading/cascading-hadoop "2.0.0"
                   :exclusions [org.codehaus.janino/janino
                                org.apache.hadoop/hadoop-core]]]
   :dev-dependencies [[org.apache.hadoop/hadoop-core "0.20.2-dev"]
