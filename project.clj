@@ -1,4 +1,4 @@
-(defproject backtype/dfs-datastores-cascading "1.2.0-SNAPSHOT"
+(defproject backtype/dfs-datastores-cascading "1.2.0"
   :java-source-path "src/jvm"
   :source-path "src/clj"
   :java-test-path "test/jvm"
