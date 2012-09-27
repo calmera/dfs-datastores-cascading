@@ -6,6 +6,7 @@ import cascading.scheme.SinkCall;
 import cascading.scheme.SourceCall;
 import cascading.tap.Tap;
 import cascading.tuple.Fields;
+import cascading.tuple.TupleEntry;
 import cascading.tuple.TupleEntryCollector;
 import cascading.tuple.TupleEntryIterator;
 import org.apache.hadoop.mapred.JobConf;
@@ -43,6 +44,11 @@ public class NullTap extends Tap  {
         }
     }
 
+    public static class NullTupleEntryCollector extends TupleEntryCollector {
+        @Override protected void collect(TupleEntry tupleEntry) throws IOException { }
+    }
+
+
     public NullTap() {
         super(new NullScheme());
     }
@@ -58,7 +64,7 @@ public class NullTap extends Tap  {
 
     @Override public TupleEntryCollector openForWrite(FlowProcess flowProcess, Object o)
         throws IOException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new NullTupleEntryCollector();
     }
 
     @Override public boolean createResource(Object o) throws IOException {
