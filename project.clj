@@ -1,4 +1,4 @@
-(defproject backtype/dfs-datastores-cascading "1.2.1-SNAPSHOT"
+(defproject backtype/dfs-datastores-cascading "1.2.1"
   :source-paths ["src/clj"]
   :java-source-paths ["src/jvm" "test/jvm"]
   :description "Taps for using dfs-datastores with Cascading."
