@@ -1,4 +1,4 @@
-package backtype.cascading.tap;
+package backtype.cascading.scheme;
 
 import cascading.flow.FlowProcess;
 import cascading.flow.hadoop.HadoopFlowProcess;

@@ -13,8 +13,6 @@
                  [cascading/cascading-hadoop "2.0.2"
                   :exclusions [org.codehaus.janino/janino
                                org.apache.hadoop/hadoop-core]]]
-  :dev-dependencies [[org.apache.hadoop/hadoop-core "0.20.2-dev"]
-                     [junit "4.10"]]
   :profiles {:dev
              {:dependencies [[org.apache.hadoop/hadoop-core "0.20.2-dev"]
                              [junit "4.10"]]}})
