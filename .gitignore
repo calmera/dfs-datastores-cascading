@@ -20,3 +20,4 @@ autodoc
 *.ipr
 *.iws
 .idea
+target
