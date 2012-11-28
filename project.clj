@@ -1,4 +1,4 @@
-(defproject backtype/dfs-datastores-cascading "1.2.2-SNAPSHOT"
+(defproject backtype/dfs-datastores-cascading "1.2.2"
   :description "Taps for using dfs-datastores with Cascading."
   :url "https://github.com/nathanmarz/dfs-datastores-cascading"
   :license {:name "Eclipse Public License"
