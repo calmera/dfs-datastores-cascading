@@ -99,7 +99,7 @@ public class VersionedTap extends Hfs {
   public String getIdentifier() {
     String outDir = getOutputDirectory();
     String versionString = (version == null) ? "LATEST" : version.toString();
-    return "manhattan_"
+    return "manhattan"
            + ((mode == TapMode.SINK) ? "sink" : "source")
            + ":" + outDir + ":" + versionString;
   }
