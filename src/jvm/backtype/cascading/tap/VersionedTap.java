@@ -7,13 +7,14 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapred.FileInputFormat;
 import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.mapred.JobConf;
+import org.apache.hadoop.mapred.OutputCollector;
+import org.apache.hadoop.mapred.RecordReader;
 
-import backtype.cascading.scheme.KeyValueByteScheme;
 import backtype.hadoop.datastores.VersionedStore;
 import backtype.support.CascadingUtils;
 import cascading.flow.FlowProcess;
+import cascading.scheme.Scheme;
 import cascading.tap.hadoop.Hfs;
-import cascading.tuple.Fields;
 
 public class VersionedTap extends Hfs {
   public static enum TapMode {SOURCE, SINK}
@@ -26,9 +27,9 @@ public class VersionedTap extends Hfs {
   // sink-specific
   private String newVersionPath;
 
-  public VersionedTap(String dir, String keyField, String valField, TapMode mode)
+  public VersionedTap(String dir, Scheme<JobConf,RecordReader,OutputCollector,?,?> scheme, TapMode mode)
       throws IOException {
-    super(new KeyValueByteScheme(new Fields(keyField, valField)), dir);
+    super(scheme, dir);
     this.mode = mode;
   }
 
